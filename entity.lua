@@ -120,7 +120,7 @@ end
 ---@return function
 function Entity.shader_builder(path, uniforms, update_func)
 	return function()
-		return shader.load("shaders/" .. path), uniforms or {}, update_func or function(self) end
+		return shader.load("shaders/" .. path), uniforms or {}, update_func or function(self, dt) end
 	end
 end
 

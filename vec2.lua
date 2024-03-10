@@ -14,6 +14,9 @@ Vec2.mt = {
 	__mul = function(u, v)
 		return Vec2.new(u.x * v.x, u.y * v.y)
 	end,
+	__div = function(u, v)
+		return Vec2.new(u.x / v.y, v.y * v.y)
+	end,
 
 	__tostring = function(self)
 		return string.format("Vec2 (%f, %f)", self.x, self.y)

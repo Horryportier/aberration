@@ -5,6 +5,7 @@ local Transform = require("transform")
 local Color = require("color")
 local Entity = require("entity")
 local Map = require("map")
+local Camera = require("camera").new({})
 
 local pbb = require("entity").physics_body_builder
 local bb = require("entity").body_builder
@@ -12,6 +13,7 @@ local bsb = require("entity").shape_builder
 local sb = require("entity").sprite_builder
 
 Game = {
+	dt = 0,
 	bg_color = Color.new(0.2),
 	---@type Entity[]
 	entities = {},
@@ -38,7 +40,7 @@ function love.load()
 		World = love.physics.newWorld(0, 200, true)
 	end
 	setup_world()
-	Game.entities.sword = Entity.builder(World, "sword.png", {
+	Game.entities.player = Entity.builder(World, "sword.png", {
 		sprite = sb("sword.png", 32),
 		b = pbb(World, bb("dynamic", Vec2.new(200):get_xy()), bsb("rectangle", { 32 * 1, 32 * (player_scale * 0.9) })),
 		shader = Entity.shader_builder("distortion.glsl", { velocity = Vec2.default():as_array() }, function(self)
@@ -49,22 +51,22 @@ function love.load()
 	})
 
 	Map.load_level(Game, World, "level1.txt", 32)
-	local t = {
-		["1"] = "lol",
-	}
-	print(t["1"])
 end
 
 local pre_draw = function()
 	Game.bg_color:set(love.graphics.setBackgroundColor)
 	love.graphics.setFont(Game.font)
+	Camera:apply_filters()
+	Camera:update()
 end
+
 function love.draw()
 	pre_draw()
 
 	for _, value in pairs(Game.entities) do
 		if value.shader_send then
-			value:shader_send()
+			Camera:look_at(Game.entities.player.t)
+			value:shader_send(Game.dt)
 		end
 		value:draw()
 		if Game.debug then
@@ -74,12 +76,14 @@ function love.draw()
 	local old_color = Color.new(love.graphics.getColor())
 	love.graphics.setColor(Color.default():normalize():unpack())
 	if Game.debug then
-		love.graphics.print(inspect(Game:sanitise().entities[Game.current_debug]))
+		--love.graphics.print(inspect(Game:sanitise().entities.player))
+		love.graphics.print(inspect(utils.strip_functions(Camera)))
 	end
 	love.graphics.setColor(old_color:unpack())
 end
 
 function love.update(dt)
+	Game.dt = dt
 	for _, value in pairs(Game.entities) do
 		value:sync_trasfroms()
 		if value.move then

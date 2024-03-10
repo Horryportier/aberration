@@ -1,5 +1,6 @@
 local Entity = require("entity")
 local utils = require("utils")
+local inspect = require("inspect").inspect
 
 local pbb = require("entity").physics_body_builder
 local bb = require("entity").body_builder
@@ -30,12 +31,15 @@ function Map.load_level(Game, World, path, resolution)
 		local x = 0
 		for i = 1, #line, 1 do
 			local matched = tiles_ids[line:sub(i, i)]
-			print(matched)
 			if matched then
 				table.insert(
 					Game.entities,
 					Entity.builder(World, format_name(x, y), {
-						b = pbb(World, bb("static", x * resolution, y * resolution), bsb("rectangle", { 32, 32 })),
+						b = pbb(
+							World,
+							bb("static", math.ceil(x * resolution), math.ceil(y * resolution)),
+							bsb("rectangle", { 32, 32 })
+						),
 						sprite = sb(matched, 32),
 						shader = Entity.shader_builder(
 							"tile_shader.glsl",
