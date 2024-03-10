@@ -79,6 +79,13 @@ Vec2.to_angle = function(self)
 	return math.atan2(-self.y, -self.x)
 end
 
+Vec2.clamp = function(self, min, max)
+	self.x = self.x < min.x and min.x or self.x
+	self.x = self.x > max.x and max.x or self.x
+	self.y = self.y < min.y and min.y or self.y
+	self.y = self.y > max.y and max.y or self.y
+end
+
 Vec2.ZERO = Vec2.default()
 Vec2.UP = Vec2.new(0, -1)
 Vec2.DOWN = Vec2.new(0, 1)

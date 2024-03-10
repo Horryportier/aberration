@@ -1,6 +1,7 @@
 local inspect = require("inspect").inspect
 local drawable_mt = {}
 
+
 local Drawable = {
 	new = function(t)
 		---@param self Entity
