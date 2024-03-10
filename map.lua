@@ -10,13 +10,13 @@ local sb = require("entity").sprite_builder
 local Map = {}
 
 local tiles_ids = {
-	["1"] = "tile1.png",
+	["_"] = "tile1.png",
 	["2"] = "tile2.png",
-	["3"] = "tile3.png",
+	["#"] = "tile3.png",
 	["4"] = "tile4.png",
-	["5"] = "tile5.png",
+	["-"] = "tile5.png",
 	["6"] = "tile6.png",
-	["7"] = "tile7.png",
+	["|"] = "tile7.png",
 	["8"] = "tile8.png",
 }
 
