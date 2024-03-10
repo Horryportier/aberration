@@ -12,6 +12,13 @@ local bb = require("entity").body_builder
 local bsb = require("entity").shape_builder
 local sb = require("entity").sprite_builder
 
+--- TODO:
+-- tweennig - implemnet basic tweennig functions
+-- animation - create animation abstraction
+-- enemies - meka basic enemies
+-- points - make collectabeles and score
+-- ui - basic ui
+
 Game = {
 	user_input = "",
 	dt = 0,
@@ -89,6 +96,8 @@ function love.update(dt)
 	for _, value in pairs(Game.entities) do
 		value:sync_trasfroms()
 		if value.move then
+			print(value.name .. tostring(value.velocity))
+
 			value:move(dt)
 		end
 	end

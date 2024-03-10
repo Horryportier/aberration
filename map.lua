@@ -56,14 +56,15 @@ local tiles_ids = {
 			b = pbb(
 				World,
 				bb("dynamic", math.ceil(x * resolution), math.ceil(y * resolution)),
-				bsb("circle", resolution / 2)
+				bsb("circle", resolution / 2),
+				10
 			),
 			sprite = sb("coin.png", resolution),
 			shader = Entity.shader_builder("distortion.glsl", { velocity = Vec2.default() }, function(self)
 				self.shader_uniforms.velocity = self.velocity:normalize():as_array()
 			end),
 			move = function(self, dt)
-				self.velocity = Vec2.UP
+				self.velocity = (Vec2.UP * Vec2.new(0, math.cos(love.timer.getTime())) * Vec2.new(10))
 			end,
 		})
 	end,
