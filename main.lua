@@ -13,6 +13,7 @@ local bsb = require("entity").shape_builder
 local sb = require("entity").sprite_builder
 
 Game = {
+	user_input = "",
 	dt = 0,
 	bg_color = Color.new(0.2),
 	---@type Entity[]
@@ -23,8 +24,9 @@ Game = {
 }
 
 local player_movement = function(self)
-	local v = (love.keyboard.isDown("a") and Vec2.LEFT or Vec2.ZERO)
-		+ (love.keyboard.isDown("e") and Vec2.RIGHT or Vec2.ZERO)
+	local speed = Vec2.new(self.speed) or Vec2.ZERO
+	local v = (love.keyboard.isDown("a") and Vec2.LEFT * speed or Vec2.ZERO)
+		+ (love.keyboard.isDown("e") and Vec2.RIGHT * speed or Vec2.ZERO)
 		+ (love.keyboard.isDown("space") and Vec2.UP * Vec2.new(10) or Vec2.ZERO)
 	self.velocity = v
 end
@@ -48,7 +50,7 @@ function love.load()
 		end),
 		t = Transform.new(Vec2.default(), 0, Vec2.new(player_scale)),
 		move = player_movement,
-	})
+	}, { speed = 5 })
 
 	Map.load_level(Game, World, "level1.txt", 32)
 end
@@ -64,8 +66,8 @@ function love.draw()
 	pre_draw()
 
 	for _, value in pairs(Game.entities) do
+		Camera:look_at(Game.entities.player.t)
 		if value.shader_send then
-			Camera:look_at(Game.entities.player.t)
 			value:shader_send(Game.dt)
 		end
 		value:draw()
@@ -76,9 +78,9 @@ function love.draw()
 	local old_color = Color.new(love.graphics.getColor())
 	love.graphics.setColor(Color.default():normalize():unpack())
 	if Game.debug then
-		--love.graphics.print(inspect(Game:sanitise().entities.player))
-		love.graphics.print(inspect(utils.strip_functions(Camera)))
+		love.graphics.print(inspect(Game:sanitise().entities[Game.current_debug]))
 	end
+	love.graphics.print(Game.user_input, (Camera.t.translation * Vec2.new(-1)):get_xy())
 	love.graphics.setColor(old_color:unpack())
 end
 
@@ -87,10 +89,13 @@ function love.update(dt)
 	for _, value in pairs(Game.entities) do
 		value:sync_trasfroms()
 		if value.move then
-			value:move()
+			value:move(dt)
 		end
 	end
 	World:update(dt, 100, 100)
+end
+love.textinput = function(t)
+	Game.user_input = Game.user_input .. t
 end
 
 function love.keypressed(key)

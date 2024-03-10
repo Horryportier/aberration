@@ -99,17 +99,19 @@ end
 ---@param World love.World
 ---@param body function -- body function must take world as first argument
 ---@param shape function
+---@param mass number?
 ---@return  function
-function Entity.physics_body_builder(World, body, shape)
+function Entity.physics_body_builder(World, body, shape, mass)
 	---@return love.Body
 	---@return love.Shape
 	---@return function
 	---@return love.Fixture
+	---@return number
 	local f = function()
 		local b = body(World)
 		local s, sd = shape()
 		local f = love.physics.newFixture(b, s)
-		return b, s, sd, f
+		return b, s, sd, f, mass or 0
 	end
 	return f
 end
@@ -140,7 +142,9 @@ Entity.builder = function(World, name, opts, other)
 		t.sprite, t.resolution = opts.sprite()
 	end)
 	if_exists(opts.b, function()
-		t.b, t.s, t.sd, t.f = opts.b(World)
+		local m = 0
+		t.b, t.s, t.sd, t.f, m = opts.b(World)
+		t.b:setMass(m)
 	end)
 
 	if_exists(opts.shader, function()

@@ -10,4 +10,7 @@ function shader_loader.load(path)
 	return love.graphics.newShader(contents)
 end
 
+shader_loader.distortion_fn = function(self)
+	self.shader_uniforms.velocity = self.velocity:normalize():as_array()
+end
 return shader_loader
