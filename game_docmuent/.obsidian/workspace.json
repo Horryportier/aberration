@@ -1,0 +1,238 @@
+{
+  "main": {
+    "id": "3a46ff1890681d86",
+    "type": "split",
+    "children": [
+      {
+        "id": "0a2430296326b45b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8c690dec58f9a2f7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Game Pitch.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "bb68e8368cbd1f4c",
+    "type": "split",
+    "children": [
+      {
+        "id": "fc1ac9f095ad4763",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "126ce3e12e90842e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "b959ccc64013ad5e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#dimont",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "4994ff6e93cb43c8",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          },
+          {
+            "id": "52b64f28623d68c2",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          },
+          {
+            "id": "9c13fe96b0ab057d",
+            "type": "leaf",
+            "state": {
+              "type": "tagfolder-view",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "972cc74418e02b7b",
+    "type": "split",
+    "children": [
+      {
+        "id": "a954812b7e93c109",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fabb31c663014c2d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Game Pitch.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "5748037bcc838d1d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Game Pitch.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "f6ef80011a8cbcab",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "07666402276e634b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Game Pitch.md"
+              }
+            }
+          },
+          {
+            "id": "dbf453246e536644",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {}
+            }
+          },
+          {
+            "id": "d39f5d53b18b5763",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              }
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "3d-graph:3D Graph": false
+    }
+  },
+  "active": "8c690dec58f9a2f7",
+  "lastOpenFiles": [
+    "game_document.md",
+    "Game Pitch.md",
+    "Concept.md",
+    "Art.md",
+    "Player_Expirance.md",
+    "Game_Experience.md",
+    "Inspiration.md",
+    "Development_Timeline.md",
+    "Audio.md",
+    "Daily/2024-01-10.md",
+    "Daily/2024-01-09.md",
+    "Chad/4913",
+    "4913",
+    "test.md",
+    "Ick/4913",
+    "Daily/2024-01-08.md",
+    "Jams/Soul Harvester/SH TODO.md",
+    "Daily/2023-11-12.md",
+    "Jams/Soul Harvester/Soul Harvester.md",
+    "Jams/Soul Harvester/soul harvester abilites.md",
+    "Jams/Soul Harvester/SH envirioment.md",
+    "Daily/2023-10-09.md",
+    "Jams/GMTK_JAM.md",
+    "Jams/Soul Harvester",
+    "Jams/before_jam_setup.md",
+    "Jams/theme.md",
+    "Jams/prototype.md",
+    "Jams/Pasted Image 20230707193248_972.png",
+    "Jams/Pasted Image 20230707193118_962.jpg",
+    "Jams/Pasted Image 20230707192902_949.png",
+    "Jams/Pasted Image 20230707192732_905.jpg",
+    "Jams/Pasted Image 20230707192817_946.jpg",
+    "Jams/Pasted Image 20230707192947_953.jpg",
+    "Jams/godot_resorces.md",
+    "Daily/2023-10-15.md",
+    "Excalidraw/Drawing 2023-10-09 12.34.59.excalidraw.md",
+    "Knowlage_bank",
+    "Daily/4913",
+    "Daily/2023-08-25.md~",
+    "Chad",
+    "CheatSheet/Bash",
+    "Untitled.canvas",
+    "CheatSheet/Attachments/structure.png",
+    "CheatSheet/Attachments/ram-pump.gif",
+    "CheatSheet/Template",
+    "Jams/inspiration/core.png",
+    "Jams/inspiration/core_slime.jpeg"
+  ]
+}

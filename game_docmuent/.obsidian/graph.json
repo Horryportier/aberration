@@ -1,0 +1,86 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": true,
+  "showAttachments": true,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": true,
+  "colorGroups": [
+    {
+      "query": "tag:#daily  ",
+      "color": {
+        "a": 1,
+        "rgb": 14348833
+      }
+    },
+    {
+      "query": "tag:#rust  ",
+      "color": {
+        "a": 1,
+        "rgb": 11029530
+      }
+    },
+    {
+      "query": "tag:#challenger  ",
+      "color": {
+        "a": 1,
+        "rgb": 31743
+      }
+    },
+    {
+      "query": "tag:#master  ",
+      "color": {
+        "a": 1,
+        "rgb": 8984021
+      }
+    },
+    {
+      "query": "tag:#dimond",
+      "color": {
+        "a": 1,
+        "rgb": 1663186
+      }
+    },
+    {
+      "query": "tag:#gold  ",
+      "color": {
+        "a": 1,
+        "rgb": 9529101
+      }
+    },
+    {
+      "query": "tag:#bronze  ",
+      "color": {
+        "a": 1,
+        "rgb": 6109188
+      }
+    },
+    {
+      "query": "tag:#iron  ",
+      "color": {
+        "a": 1,
+        "rgb": 4338724
+      }
+    },
+    {
+      "query": "tag:#branch  ",
+      "color": {
+        "a": 1,
+        "rgb": 5526612
+      }
+    }
+  ],
+  "collapse-display": true,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": true,
+  "centerStrength": 0.289040339700132,
+  "repelStrength": 18.5,
+  "linkStrength": 0.92,
+  "linkDistance": 47,
+  "scale": 0.3003387451171875,
+  "close": true
+}

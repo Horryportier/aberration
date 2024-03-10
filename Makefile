@@ -1,0 +1,2 @@
+def:
+	love $(shell pwd)
