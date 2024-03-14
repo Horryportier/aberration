@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "0a2430296326b45b",
+        "id": "0dccd5025214fc2f",
         "type": "tabs",
         "children": [
           {
-            "id": "8c690dec58f9a2f7",
+            "id": "58ea75d39431bb74",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Game Pitch.md",
-                "mode": "source",
+                "file": "Genre.md",
+                "mode": "preview",
                 "source": false
               }
             }
@@ -101,7 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Game Pitch.md",
+                "file": "Genre.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Game Pitch.md",
+                "file": "Genre.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -141,7 +141,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Game Pitch.md"
+                "file": "Genre.md"
               }
             }
           },
@@ -185,21 +185,40 @@
       "3d-graph:3D Graph": false
     }
   },
-  "active": "8c690dec58f9a2f7",
+  "active": "58ea75d39431bb74",
   "lastOpenFiles": [
-    "game_document.md",
-    "Game Pitch.md",
-    "Concept.md",
-    "Art.md",
-    "Player_Expirance.md",
-    "Game_Experience.md",
     "Inspiration.md",
+    "inspiration.canvas",
+    "game_document.md",
+    "Gameplay_Overiview.md",
+    "Genre.md",
+    "Software.md",
+    "insc.md",
+    "Untitled.md",
+    "Platform.md",
+    "Player_Expirance.md",
+    "Art.md",
+    "minecraft.jpg",
+    "lasers.jpeg",
+    "Design.md",
+    "Sixty-Four-1.webp",
+    "Gameplay_Overiview.md~",
+    "4913",
+    "Target_Audiance.md~",
+    "game_document.md~",
+    "Target_Audiance.md",
+    "Software.md~",
+    "Player_Expirance.md~",
+    "Inspiration.md~",
+    "Game Pitch.md~",
+    "Game Pitch.md",
+    "Game_Experience.md",
     "Development_Timeline.md",
+    "Concept.md",
     "Audio.md",
     "Daily/2024-01-10.md",
     "Daily/2024-01-09.md",
     "Chad/4913",
-    "4913",
     "test.md",
     "Ick/4913",
     "Daily/2024-01-08.md",
@@ -207,32 +226,12 @@
     "Daily/2023-11-12.md",
     "Jams/Soul Harvester/Soul Harvester.md",
     "Jams/Soul Harvester/soul harvester abilites.md",
-    "Jams/Soul Harvester/SH envirioment.md",
-    "Daily/2023-10-09.md",
-    "Jams/GMTK_JAM.md",
-    "Jams/Soul Harvester",
-    "Jams/before_jam_setup.md",
-    "Jams/theme.md",
-    "Jams/prototype.md",
     "Jams/Pasted Image 20230707193248_972.png",
     "Jams/Pasted Image 20230707193118_962.jpg",
     "Jams/Pasted Image 20230707192902_949.png",
     "Jams/Pasted Image 20230707192732_905.jpg",
     "Jams/Pasted Image 20230707192817_946.jpg",
     "Jams/Pasted Image 20230707192947_953.jpg",
-    "Jams/godot_resorces.md",
-    "Daily/2023-10-15.md",
-    "Excalidraw/Drawing 2023-10-09 12.34.59.excalidraw.md",
-    "Knowlage_bank",
-    "Daily/4913",
-    "Daily/2023-08-25.md~",
-    "Chad",
-    "CheatSheet/Bash",
-    "Untitled.canvas",
-    "CheatSheet/Attachments/structure.png",
-    "CheatSheet/Attachments/ram-pump.gif",
-    "CheatSheet/Template",
-    "Jams/inspiration/core.png",
-    "Jams/inspiration/core_slime.jpeg"
+    "CheatSheet/Attachments/structure.png"
   ]
 }

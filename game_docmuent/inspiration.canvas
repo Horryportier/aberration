@@ -1,0 +1,19 @@
+{
+	"nodes":[
+		{"id":"0739eac1e7ab5a78","type":"group","x":800,"y":-100,"width":720,"height":530,"color":"#7306e0","label":"Light"},
+		{"id":"d73a77bfc24aeba1","type":"group","x":-120,"y":-100,"width":851,"height":380,"color":"3","label":"Simple"},
+		{"id":"c240ca794adf88e0","type":"group","x":-840,"y":-120,"width":660,"height":315,"label":"Sixty four"},
+		{"id":"4948f7bac0ba983e","type":"file","file":"Sixty-Four-1.webp","x":-820,"y":-50,"width":400,"height":225},
+		{"id":"e74142cd6f550aeb","type":"text","text":"simple, small color palette, smooth surface","x":-670,"y":-100,"width":250,"height":50},
+		{"id":"da58f3b0e2f34220","type":"text","text":"sixty four has very minimal yet plesend  looking visuals, using high contrast sharp colors and shapes. Giving it unique look.  ","x":-420,"y":-50,"width":220,"height":225,"color":"6"},
+		{"id":"65bf9956fc8a1129","type":"file","file":"Art.md","x":-80,"y":-50,"width":360,"height":270},
+		{"id":"f17440d3ce8e64ca","type":"text","text":"####  Simple design would be helpful  with my current art  skills.  ","x":360,"y":-47,"width":331,"height":265},
+		{"id":"ef99f5eb607fb7cd","type":"text","text":"Light will be very important  in this game so everything else should not have many colors because these will be added through light","x":820,"y":-80,"width":300,"height":170},
+		{"id":"941c0576d5c49e35","type":"file","file":"lasers.jpeg","x":1160,"y":-80,"width":227,"height":170},
+		{"id":"be1c56c8d412605d","type":"file","file":"minecraft.jpg","x":820,"y":130,"width":300,"height":171}
+	],
+	"edges":[
+		{"id":"44b46410fb777d08","fromNode":"d73a77bfc24aeba1","fromSide":"top","toNode":"c240ca794adf88e0","toSide":"top"},
+		{"id":"77fc54e685321388","fromNode":"d73a77bfc24aeba1","fromSide":"top","toNode":"0739eac1e7ab5a78","toSide":"top"}
+	]
+}
