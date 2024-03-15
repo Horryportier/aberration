@@ -26,6 +26,7 @@ Bevy or Godot or Love2d
 - Krita
     if i don't go for pixel art style
 - Other
+	tiled for tile-maps
 
 
 ## Music

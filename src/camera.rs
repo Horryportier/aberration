@@ -18,6 +18,7 @@ fn camera_control(
     keys: Res<ButtonInput<KeyCode>>,
 ) {
     let Ok((mut cv, mut ct)) = camera.get_single_mut() else {
+        println!("no player");
         return;
     };
     // player folow

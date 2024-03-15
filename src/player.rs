@@ -23,7 +23,6 @@ pub fn spawn_player(mut commands: Commands, assets_server: Res<AssetServer>) {
             ..Default::default()
         },
         Player,
-        Transform::default(),
         Velocity(Vec3::default()),
     ));
 }
@@ -35,22 +34,26 @@ fn player_movement(
     mut player: Query<&mut Velocity, With<Player>>,
     keys: Res<ButtonInput<KeyCode>>,
 ) {
-    let mut v = player.single_mut();
+    let Ok(mut v) = player.get_single_mut() else {
+        return;
+    };
+    let mut key_vel = Velocity(Vec3::default());
 
-    match keys.pressed(KeyCode::KeyW) {
-        true => v.y = 1.0,
-        false => v.y = 0.0,
+    if keys.pressed(KeyCode::KeyD) {
+        key_vel.x += 1.0;
     }
-    match keys.pressed(KeyCode::KeyS) {
-        true => v.y = -1.0,
-        false => v.y = 0.0,
+
+    if keys.pressed(KeyCode::KeyA) {
+        key_vel.x -= 1.0;
     }
-    match keys.pressed(KeyCode::KeyA) {
-        true => v.x = -1.0,
-        false => v.x = 0.0,
+
+    if keys.pressed(KeyCode::KeyW) {
+        key_vel.y += 1.0;
     }
-    match keys.pressed(KeyCode::KeyD) {
-        true => v.x = 1.0,
-        false => v.x = 0.0,
+
+    if keys.pressed(KeyCode::KeyS) {
+        key_vel.y -= 1.0;
     }
+
+    v.0 += key_vel.0;
 }

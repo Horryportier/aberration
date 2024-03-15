@@ -25,6 +25,7 @@ dependencies = [
  "anyhow",
  "bevy",
  "bevy-inspector-egui",
+ "bevy_ecs_tilemap",
  "serde",
  "serde_derive",
  "serde_json",
@@ -577,6 +578,16 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 2.0.52",
+]
+
+[[package]]
+name = "bevy_ecs_tilemap"
+version = "0.12.0"
+source = "git+https://github.com/StarArawn/bevy_ecs_tilemap.git#25def41e029626bb5e84fe7aca1f16a1d6beccdc"
+dependencies = [
+ "bevy",
+ "log",
+ "regex",
 ]
 
 [[package]]

@@ -13,7 +13,7 @@ opt-level = 3
 anyhow = "1.0.79"
 bevy = "0.13.0"
 bevy-inspector-egui = "0.23"
+bevy_ecs_tilemap = { git = "https://github.com/StarArawn/bevy_ecs_tilemap.git" }
 serde = { version = "1.0.196", features = ["derive"] }
 serde_derive = "1.0.196"
 serde_json = "1.0.113"
-
