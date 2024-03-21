@@ -2,6 +2,8 @@ use bevy::prelude::*;
 
 #[derive(Debug, Component, Deref, DerefMut)]
 pub struct Velocity(pub Vec3);
+#[derive(Debug, Component, Deref, DerefMut)]
+pub struct Speed(pub f32);
 
 pub struct VelocityPlugin;
 

@@ -1,11 +1,13 @@
 use bevy::prelude::*;
 
-use crate::Velocity;
+use crate::{velocity::Speed, Velocity};
 
 #[derive(Component)]
 pub struct Player;
 
 pub struct PlayerPlugin;
+
+const PLAYER_Z_INDEX: f32 = 10.;
 
 impl Plugin for PlayerPlugin {
     fn build(&self, app: &mut App) {
@@ -20,39 +22,39 @@ pub fn spawn_player(mut commands: Commands, assets_server: Res<AssetServer>) {
     commands.spawn((
         SpriteBundle {
             texture: texture_handle,
+            transform: Transform::default().with_translation(Vec3::new(0., 0., PLAYER_Z_INDEX)),
             ..Default::default()
         },
         Player,
+        Speed(2.),
         Velocity(Vec3::default()),
     ));
 }
-// FIX: Encountered a panic when applying buffers for system `aberration::player::spawn_player`!
-// bevy_ecs::system::commands::command_queue: CommandQueue has un-applied commands being dropped.
-// bevy_ecs::system::commands::command_queue: CommandQueue has un-applied commands being dropped.
-// Encountered a panic in system `bevy_app::main_schedule::Main::run_main`!
+
 fn player_movement(
-    mut player: Query<&mut Velocity, With<Player>>,
+    mut player: Query<(&mut Velocity, &Speed), With<Player>>,
     keys: Res<ButtonInput<KeyCode>>,
 ) {
-    let Ok(mut v) = player.get_single_mut() else {
+    let Ok((mut v, s)) = player.get_single_mut() else {
         return;
     };
+    let s = **s;
     let mut key_vel = Velocity(Vec3::default());
 
     if keys.pressed(KeyCode::KeyD) {
-        key_vel.x += 1.0;
+        key_vel.x += s;
     }
 
     if keys.pressed(KeyCode::KeyA) {
-        key_vel.x -= 1.0;
+        key_vel.x -= s;
     }
 
     if keys.pressed(KeyCode::KeyW) {
-        key_vel.y += 1.0;
+        key_vel.y += s;
     }
 
     if keys.pressed(KeyCode::KeyS) {
-        key_vel.y -= 1.0;
+        key_vel.y -= s;
     }
 
     v.0 += key_vel.0;
