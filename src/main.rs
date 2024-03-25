@@ -1,12 +1,13 @@
 mod camera;
 
+mod animation;
 mod helpers;
+mod macros;
 mod player;
 mod tileset;
 mod velocity;
 
 use bevy::prelude::*;
-use bevy_ecs_tilemap::TilemapPlugin;
 use bevy_inspector_egui::quick::WorldInspectorPlugin;
 use velocity::Velocity;
 
@@ -25,11 +26,10 @@ fn main() {
                     ..Default::default()
                 })
                 .set(ImagePlugin::default_nearest()),
-            TilemapPlugin,
             WorldInspectorPlugin::default(),
         ))
         .add_plugins((
-            //tileset::TileSetPlugin,
+            tileset::TileMapPlugin,
             camera::CameraPlugin,
             velocity::VelocityPlugin,
             player::PlayerPlugin,

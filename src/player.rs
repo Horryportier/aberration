@@ -1,6 +1,11 @@
-use bevy::prelude::*;
+use bevy::{prelude::*, sprite};
 
-use crate::{velocity::Speed, Velocity};
+use crate::{
+    animation::{AnimationType, Animator},
+    spritesheet,
+    velocity::Speed,
+    Velocity,
+};
 
 #[derive(Component)]
 pub struct Player;
@@ -16,18 +21,30 @@ impl Plugin for PlayerPlugin {
     }
 }
 
-pub fn spawn_player(mut commands: Commands, assets_server: Res<AssetServer>) {
-    let texture_handle = assets_server.load("sword.png");
+pub fn spawn_player(
+    mut commands: Commands,
+    assets_server: Res<AssetServer>,
+
+    mut texture_atlas_layouts: ResMut<Assets<TextureAtlasLayout>>,
+) {
+    let texture_handle: Handle<Image> = assets_server.load("player.png");
+    let layout = TextureAtlasLayout::from_grid(Vec2::new(32., 32.), 1, 3, None, None);
+    let texture_atlas_layout = texture_atlas_layouts.add(layout);
 
     commands.spawn((
-        SpriteBundle {
+        SpriteSheetBundle {
             texture: texture_handle,
+            atlas: TextureAtlas {
+                layout: texture_atlas_layout,
+                index: 0,
+            },
             transform: Transform::default().with_translation(Vec3::new(0., 0., PLAYER_Z_INDEX)),
             ..Default::default()
         },
         Player,
         Speed(2.),
         Velocity(Vec3::default()),
+        PlayerAnimType::Idle,
     ));
 }
 
@@ -58,4 +75,26 @@ fn player_movement(
     }
 
     v.0 += key_vel.0;
+}
+
+#[derive(Debug, Component)]
+enum PlayerAnimType {
+    Idle,
+    Move,
+}
+
+impl AnimationType for PlayerAnimType {
+    fn indices(self) -> (usize, usize) {
+        match self {
+            Self::Idle => (0, 1),
+            Self::Move => (2, 2),
+        }
+    }
+
+    fn is_repeting(self) -> bool {
+        match self {
+            Self::Idle => true,
+            Self::Move => false,
+        }
+    }
 }
