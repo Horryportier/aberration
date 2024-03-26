@@ -12,6 +12,8 @@ impl Plugin for CameraPlugin {
     }
 }
 
+const DEF_ZOOM: Vec3 = Vec3::splat(0.5);
+
 fn camera_control(
     mut camera: Query<(&mut Velocity, &mut Transform), (With<Camera2d>, Without<Player>)>,
     player: Query<&Transform, With<Player>>,
@@ -31,18 +33,22 @@ fn camera_control(
     }
     // zoom
     {
-        let zoom_change = Vec3::new(0.01, 0.01, 0.);
+        let zoom_change = Vec2::new(0.01, 0.01);
 
         if keys.pressed(KeyCode::Equal) {
-            ct.scale -= zoom_change;
+            ct.scale.x -= zoom_change.x;
+            ct.scale.y -= zoom_change.y;
         }
         if keys.pressed(KeyCode::Minus) {
-            ct.scale += zoom_change;
+            ct.scale.x += zoom_change.x;
+            ct.scale.y += zoom_change.y;
         }
         ct.scale = ct.scale.clamp(Vec3::splat(0.01), Vec3::splat(4.));
     }
 }
 
 fn spawn_camera(mut commands: Commands) {
-    commands.spawn((Camera2dBundle::default(), Velocity(Vec3::default())));
+    let mut camera_bundle = Camera2dBundle::default();
+    camera_bundle.transform = camera_bundle.transform.with_scale(DEF_ZOOM);
+    commands.spawn((camera_bundle, Velocity(Vec2::default())));
 }

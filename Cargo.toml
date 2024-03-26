@@ -16,6 +16,8 @@ atlas = []
 anyhow = "1.0.79"
 bevy = "0.13.0"
 bevy-inspector-egui = "0.23"
+bevy_egui = "0.26.0"
+clap = { version = "4.5.4", features = ["derive"] }
 rand = "0.8.5"
 serde = { version = "1.0.196", features = ["derive"] }
 serde_derive = "1.0.196"

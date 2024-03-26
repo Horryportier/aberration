@@ -1,10 +1,8 @@
-use bevy::{prelude::*, sprite};
+use bevy::prelude::*;
 
-use crate::{
-    animation::{AnimationType, Animator},
-    spritesheet,
-    velocity::Speed,
-    Velocity,
+use crate::shared::{
+    animation::{handle_animation, AnimationEnded, AnimationTimer, AnimationType, Animator},
+    velocity::{Speed, Velocity},
 };
 
 #[derive(Component)]
@@ -16,8 +14,13 @@ const PLAYER_Z_INDEX: f32 = 10.;
 
 impl Plugin for PlayerPlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(Startup, spawn_player)
-            .add_systems(Update, player_movement);
+        app.add_event::<AnimationEnded<PlayerAnimType>>()
+            .register_type::<Animator<PlayerAnimType>>()
+            .add_systems(Startup, spawn_player)
+            .add_systems(
+                Update,
+                (player_movement, handle_animation::<PlayerAnimType>),
+            );
     }
 }
 
@@ -28,7 +31,7 @@ pub fn spawn_player(
     mut texture_atlas_layouts: ResMut<Assets<TextureAtlasLayout>>,
 ) {
     let texture_handle: Handle<Image> = assets_server.load("player.png");
-    let layout = TextureAtlasLayout::from_grid(Vec2::new(32., 32.), 1, 3, None, None);
+    let layout = TextureAtlasLayout::from_grid(Vec2::new(32., 32.), 4, 1, None, None);
     let texture_atlas_layout = texture_atlas_layouts.add(layout);
 
     commands.spawn((
@@ -43,20 +46,29 @@ pub fn spawn_player(
         },
         Player,
         Speed(2.),
-        Velocity(Vec3::default()),
-        PlayerAnimType::Idle,
+        Velocity(Vec2::default()),
+        Animator(PlayerAnimType::Idle),
+        AnimationTimer(Timer::from_seconds(0.2, TimerMode::Repeating)),
     ));
 }
 
 fn player_movement(
-    mut player: Query<(&mut Velocity, &Speed), With<Player>>,
+    mut player: Query<
+        (
+            &mut Velocity,
+            &Speed,
+            &mut Animator<PlayerAnimType>,
+            &mut Sprite,
+        ),
+        With<Player>,
+    >,
     keys: Res<ButtonInput<KeyCode>>,
 ) {
-    let Ok((mut v, s)) = player.get_single_mut() else {
+    let Ok((mut v, s, mut anim, mut sprite)) = player.get_single_mut() else {
         return;
     };
     let s = **s;
-    let mut key_vel = Velocity(Vec3::default());
+    let mut key_vel = Velocity(Vec2::default());
 
     if keys.pressed(KeyCode::KeyD) {
         key_vel.x += s;
@@ -74,27 +86,37 @@ fn player_movement(
         key_vel.y -= s;
     }
 
+    if v.x.abs() <= 0.1 && v.x.abs() <= 0.1 {
+        anim.0 = PlayerAnimType::Idle
+    } else {
+        anim.0 = PlayerAnimType::Move
+    }
+    if v.x > 0.1 {
+        sprite.flip_x = false
+    } else if v.x < 0.1 {
+        sprite.flip_x = true
+    }
     v.0 += key_vel.0;
 }
 
-#[derive(Debug, Component)]
-enum PlayerAnimType {
+#[derive(Debug, Component, Clone, Copy, Reflect)]
+pub enum PlayerAnimType {
     Idle,
     Move,
 }
 
 impl AnimationType for PlayerAnimType {
-    fn indices(self) -> (usize, usize) {
+    fn indices(&self) -> (usize, usize) {
         match self {
             Self::Idle => (0, 1),
-            Self::Move => (2, 2),
+            Self::Move => (2, 3),
         }
     }
 
-    fn is_repeting(self) -> bool {
+    fn is_repeting(&self) -> bool {
         match self {
             Self::Idle => true,
-            Self::Move => false,
+            Self::Move => true,
         }
     }
 }
