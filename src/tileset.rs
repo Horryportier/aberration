@@ -1,6 +1,8 @@
 use bevy::prelude::*;
 use rand::Rng;
 
+use crate::shared::consts::BACKGROUND_TILES_LAER;
+
 pub struct TileMapPlugin;
 
 impl Plugin for TileMapPlugin {
@@ -43,7 +45,7 @@ fn spawn_tilemap(
         map_size: TILEMAP_SIZE,
     };
 
-    let make_tile = |x: i32, y: i32, z: i32, size: i32| {
+    let make_tile = |x: i32, y: i32, z: f32, size: i32| {
         (
             SpriteSheetBundle {
                 texture: texture.clone(),
@@ -51,7 +53,7 @@ fn spawn_tilemap(
                     layout: texture_atlas_layout.clone(),
                     index: rand::thread_rng().gen_range(0..5),
                 },
-                transform: Transform::from_xyz((x * size) as f32, (y * size) as f32, z as f32),
+                transform: Transform::from_xyz((x * size) as f32, (y * size) as f32, z),
                 ..Default::default()
             },
             Tile::new(x, y),
@@ -63,7 +65,7 @@ fn spawn_tilemap(
         .with_children(|parent| {
             for x in 0..tilemap.map_size {
                 for y in 0..tilemap.map_size {
-                    parent.spawn(make_tile(x, y, 0, tilemap.tile_size));
+                    parent.spawn(make_tile(x, y, BACKGROUND_TILES_LAER, tilemap.tile_size));
                 }
             }
         });

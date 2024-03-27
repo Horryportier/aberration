@@ -1,8 +1,7 @@
 use bevy::prelude::*;
 
 use crate::shared::{
-    animation::{handle_animation, AnimationEnded, AnimationTimer, AnimationType, Animator},
-    velocity::{Speed, Velocity},
+    animation::{handle_animation, AnimationEnded, AnimationTimer, AnimationType, Animator}, consts::PLAYER_LAYER, velocity::{Speed, Velocity}
 };
 
 #[derive(Component)]
@@ -10,7 +9,6 @@ pub struct Player;
 
 pub struct PlayerPlugin;
 
-const PLAYER_Z_INDEX: f32 = 10.;
 
 impl Plugin for PlayerPlugin {
     fn build(&self, app: &mut App) {
@@ -41,7 +39,7 @@ pub fn spawn_player(
                 layout: texture_atlas_layout,
                 index: 0,
             },
-            transform: Transform::default().with_translation(Vec3::new(0., 0., PLAYER_Z_INDEX)),
+            transform: Transform::default().with_translation(Vec3::new(0., 0., PLAYER_LAYER)),
             ..Default::default()
         },
         Player,

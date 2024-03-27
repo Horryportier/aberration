@@ -15,6 +15,7 @@ use egui_setup::EguiSetup;
 use opts::UiType;
 use shared::{
     animation,
+    item::{spaw_coin, spawn_crystal},
     velocity::{Velocity, VelocityPlugin},
 };
 
@@ -22,9 +23,11 @@ use shared::{
 // - [x]  organize project
 // - [x]  create inspector ui and register types
 //      - [ ] make advanced dev ui
-// - [ ] learn how to make bundels
+// - [x] learn how to make bundels
 // - [ ] learn how to add shaders and light
 // - [x] fix tilemap transform isssue
+// - [ ] colision
+// - [ ] create inventory
 
 fn main() -> anyhow::Result<()> {
     let args = args::Args::parse();
@@ -55,6 +58,7 @@ fn main() -> anyhow::Result<()> {
             ui_plugin,
             animation::AnimationPlugin,
         ))
+        .add_systems(Startup, (spawn_crystal, spaw_coin))
         .run();
 
     Ok(())
