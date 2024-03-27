@@ -8,8 +8,8 @@ pub struct GameOptions {
 #[derive(ValueEnum, Debug, PartialEq, Clone, Copy, Default)]
 #[clap(rename_all = "kebab_case")]
 pub enum UiType {
-    #[default]
     Game,
     Dev,
+    #[default]
     DevSimple,
 }

@@ -6,12 +6,14 @@ use crate::opts::{GameOptions, UiType};
 #[derive(Parser, Debug, PartialEq)]
 pub struct Args {
     #[arg(long)]
-    ui: UiType,
+    ui: Option<UiType>,
 }
 
 impl Args {
     pub fn exec(&self) -> anyhow::Result<GameOptions> {
-        let opts = GameOptions { ui: self.ui };
+        let opts = GameOptions {
+            ui: self.ui.unwrap_or_default(),
+        };
         return Ok(opts);
     }
 }

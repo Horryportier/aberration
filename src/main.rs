@@ -22,7 +22,9 @@ use shared::{
 // - [x]  organize project
 // - [x]  create inspector ui and register types
 //      - [ ] make advanced dev ui
-// - [ ]  learn how to make bundels
+// - [ ] learn how to make bundels
+// - [ ] learn how to add shaders and light
+// - [x] fix tilemap transform isssue
 
 fn main() -> anyhow::Result<()> {
     let args = args::Args::parse();

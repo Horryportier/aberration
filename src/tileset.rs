@@ -58,19 +58,13 @@ fn spawn_tilemap(
         )
     };
 
-    for x in 0..tilemap.map_size {
-        for y in 0..tilemap.map_size {
-            commands.spawn(make_tile(x, y, 0, tilemap.tile_size));
-        }
-    }
-    // FIX: something with child parent transoform that makes all tiles to be at 0,0
-    //commands
-    //    .spawn((tilemap, Transform::default(), Visibility::Inherited))
-    //    .with_children(|parent| {
-    //        for x in 0..tilemap.map_size {
-    //            for y in 0..tilemap.map_size {
-    //                parent.spawn(make_tile(x, y, 0, tilemap.tile_size));
-    //            }
-    //        }
-    //    });
+    commands
+        .spawn((tilemap, SpatialBundle::default()))
+        .with_children(|parent| {
+            for x in 0..tilemap.map_size {
+                for y in 0..tilemap.map_size {
+                    parent.spawn(make_tile(x, y, 0, tilemap.tile_size));
+                }
+            }
+        });
 }
